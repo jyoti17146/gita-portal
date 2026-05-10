@@ -1,0 +1,3418 @@
+/* --- Global Resets & Fonts --- */
+.hidden {
+    display: none !important;
+}
+/* ===== LOGIN PAGE (VEDIC STYLE) ===== */
+
+.login-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                url('images/battlefield.jpg') no-repeat center center;
+    background-size: cover;
+
+    z-index: 9999;
+}
+
+/* Card */
+.login-page .login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 20px;
+
+    border: 2px solid #d4af37;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3),
+                inset 0 0 10px rgba(212,175,55,0.2);
+
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* Title */
+.login-page h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Inputs */
+.login-page input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+    border: 1px solid #ccc;
+
+    font-size: 14px;
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.login-page input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 8px rgba(212,175,55,0.4);
+}
+
+/* Buttons */
+.login-page button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+
+    border: none;
+    border-radius: 30px;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* Login button */
+.login-page button:nth-of-type(1) {
+    background: #8b4513;
+    color: #ffd700;
+}
+
+.login-page button:nth-of-type(1):hover {
+    background: #5d4037;
+    transform: scale(1.03);
+}
+
+/* Signup button */
+.login-page button:nth-of-type(2) {
+    background: #deb887;
+    color: #1b0f0a;
+}
+
+.login-page button:nth-of-type(2):hover {
+    background: #d4af37;
+}
+
+/* Google button */
+.login-page button:nth-of-type(3) {
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.login-page button:nth-of-type(3):hover {
+    background: #f5f5f5;
+}
+
+/* Divider */
+.login-page .divider {
+    margin: 15px 0;
+    font-size: 12px;
+    color: #999;
+}
+
+/* Dark mode support */
+body.dark-mode .login-page .login-box {
+    background: #1b0f0a;
+    color: #f5e6c8;
+    border: 1px solid #d4af37;
+}
+
+body.dark-mode .login-page input {
+    background: #26160f;
+    color: #f5e6c8;
+    border: 1px solid #d4af37;
+}
+
+body.dark-mode .login-page button:nth-of-type(1) {
+    background: #2c1b12;
+    color: #ffd700;
+}
+
+body.dark-mode .login-page button:nth-of-type(3) {
+    background: #26160f;
+    color: #f5e6c8;
+    border: 1px solid #d4af37;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top:75px;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background-color: #fcf9f2; 
+}
+
+/* Navbar Styling */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+    backdrop-filter: blur(15px); /* Frosty blur effect */
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 2px solid #deb887; /* Gold/Bronze accent */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; /* IMPORTANT */
+}
+
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    color: #8b4513;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* control space here */
+}
+
+/* Menu Button Placeholder */
+.menu-btn {
+    background: #8b4513;
+    color: #ffd700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.05);
+    background: #5d4037;
+}
+
+.menu-header {
+    text-align: center;
+    color: #d4af37; /* gold */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+    letter-spacing: 1px;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(135deg, #2c1b12, #3e2723, #1b0f0a);
+    box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+    padding-top: 10px;
+    transition: 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    backdrop-filter: blur(6px);
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.side-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: #f5e6c8;  /* warm cream (better than white) */
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.side-menu a:hover {
+    background: rgba(212,175,55,0.15);
+    border-left: 3px solid #d4af37;
+    padding-left: 22px;
+    color: #ffd700;
+}
+
+.side-menu a.active {
+    background: #8b4513;
+    color: #ffd700;
+    border-radius: 20px;
+}
+
+.active-link {
+    background: rgba(212,175,55,0.25);
+    border-left: 3px solid #ffd700;
+    color: #ffd700;
+    font-weight: 500;
+}
+
+/* --- Global Resets & Fonts --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top:75px;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background-color: #fcf9f2; 
+}
+
+/* Navbar Styling */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+    backdrop-filter: blur(15px); /* Frosty blur effect */
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 2px solid #deb887; /* Gold/Bronze accent */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; /* IMPORTANT */
+}
+
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    color: #8b4513;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* control space here */
+}
+
+/* Menu Button Placeholder */
+.menu-btn {
+    background: #8b4513;
+    color: #ffd700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.05);
+    background: #5d4037;
+}
+
+.menu-header {
+    text-align: center;
+    color: #d4af37; /* gold */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+    letter-spacing: 1px;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(135deg, #2c1b12, #3e2723, #1b0f0a);
+    box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+    padding-top: 10px;
+    transition: 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    backdrop-filter: blur(6px);
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.side-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: #f5e6c8;  /* warm cream (better than white) */
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.side-menu a:hover {
+    background: rgba(212,175,55,0.15);
+    border-left: 3px solid #d4af37;
+    padding-left: 22px;
+    color: #ffd700;
+}
+
+.side-menu a.active {
+    background: #8b4513;
+    color: #ffd700;
+    border-radius: 20px;
+}
+
+.active-link {
+    background: rgba(212,175,55,0.25);
+    border-left: 3px solid #ffd700;
+    color: #ffd700;
+    font-weight: 500;
+}
+
+
+/* --- COMPLETE DARK MODE ENGINE --- */
+
+/* THEME BUTTON */
+#themeToggle {
+    background: #8b4513;
+    color: #1b0f0a;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    /* glow effect */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4),
+                inset 0 0 5px rgba(255,255,255,0.2);
+
+    transition: all 0.3s ease;
+}
+
+/* ✨ Hover = divine glow */
+#themeToggle:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.7),
+                0 0 30px rgba(184, 115, 51, 0.5);
+}
+
+/* 🌙 Dark mode active state */
+body.dark-mode #themeToggle {
+    background: linear-gradient(135deg, #1b0f0a, #2c1b12);
+    color: #ffd700;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+
+body.dark-mode .nav-logo {
+    color: #f4c430 !important;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+/* 1. PORTALS (Legends & Verse Study) */
+/* This fixes the "nothing is happening" issue for the overlays */
+body.dark-mode #personaPortal,
+body.dark-mode #versePortal,
+body.dark-mode .full-page-portal {
+    background-color: #1b0f0a !important;
+}
+
+body.dark-mode .portal-inner,
+body.dark-mode .portal-container {
+    background-color: #1b0f0a !important;
+    border: 2px solid #d4af37;
+}
+
+/* 2. LEGENDS PORTAL SPECIFICS (Mahabharat) */
+body.dark-mode .persona-menu {
+    background: #26160f !important;
+    border-right: 1px solid #d4af37;
+}
+
+body.dark-mode .persona-display {
+    background: #1b0f0a !important;
+}
+
+body.dark-mode .grand-entry,
+body.dark-mode .persona-content {
+    background: #1b0f0a !important;
+    color: #f5e6c8;
+}
+
+/* Sidebar Menu Items in Legends */
+body.dark-mode .persona-menu-item,
+body.dark-mode .persona-menu a,
+body.dark-mode #personaMenuList div {
+    background: #26160f !important;
+    color: #f5e6c8 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* 3. VERSE STUDY PORTAL SPECIFICS */
+body.dark-mode .portal-scroll-area {
+    background: #1b0f0a !important;
+}
+
+body.dark-mode #portalSanskrit {
+    background-color: #26160f !important;
+    color: #ffd700 !important;
+}
+
+body.dark-mode .wisdom-box,
+body.dark-mode .translit-box,
+body.dark-mode .translation-box,
+body.dark-mode .purport-box {
+    background-color: #26160f !important;
+    color: #f5e6c8 !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+/* 4. SECTIONS & CARDS (Home Page) */
+body.dark-mode .section-box,
+body.dark-mode .chapter-box,
+body.dark-mode .author-card,
+body.dark-mode .benefit-card,
+body.dark-mode .verse-card,
+body.dark-mode .tribute-card {
+    background-color: #26160f !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    color: #f5e6c8 !important;
+}
+
+/* 5. TEXT CONTRAST */
+body.dark-mode .box-title,
+body.dark-mode .main-title,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #ffd700 !important;
+}
+
+body.dark-mode .hero-para,
+body.dark-mode .section-subtitle,
+body.dark-mode p {
+    color: #f5e6c8 !important;
+}
+
+/* 6. GOOGLE TRANSLATE FIX */
+body.dark-mode .goog-te-gadget-simple,
+body.dark-mode #google_translate_element {
+    background-color: #26160f !important;
+    border: 1px solid #d4af37 !important;
+    color: #f5e6c8 !important;
+}
+
+/* 7. FOOTER & NAVIGATION */
+body.dark-mode .main-nav {
+    background: rgba(30, 15, 10, 0.95) !important;
+}
+
+body.dark-mode .side-menu {
+    background: linear-gradient(135deg, #2c1b12, #1b0f0a) !important;
+}
+
+body.dark-mode .footer-section,
+body.dark-mode footer {
+    background-color: #1b0f0a !important;
+    border-top: 1px solid #d4af37 !important;
+}
+
+/* 8. BOLD TEXT / CONCLUSION STYLE */
+body.dark-mode strong, 
+body.dark-mode b {
+    color: #ffd700; /* This makes your "Conclusion" header pop in gold */
+}
+
+/* Catch-all for any stubborn white backgrounds */
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background: white"] {
+    background-color: #26160f !important;
+}
+
+/* 🎧 PODCAST SECTION */
+body.dark-mode .podcast-section,
+body.dark-mode .podcast-card {
+    background-color: #26160f !important;
+    color: #f5e6c8 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+body.dark-mode .podcast-card h3 {
+    color: #ffd700 !important;
+}
+
+body.dark-mode .podcast-card p {
+    color: #e8dcc0 !important;
+}
+
+
+/* 📚 BOOKS SECTION */
+body.dark-mode .books-section,
+body.dark-mode .book-card {
+    background-color: #26160f !important;
+    color: #f5e6c8 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+body.dark-mode .book-card h3 {
+    color: #ffd700 !important;
+}
+
+body.dark-mode .book-card p {
+    color: #e8dcc0 !important;
+}
+
+
+/* 🔥 FINAL FAQ DARK MODE FORCE FIX */
+
+body.dark-mode #faq-section,
+body.dark-mode .faq-section {
+    background-color: #1b0f0a !important;
+}
+
+/* Each FAQ item */
+body.dark-mode .faq-item {
+    background-color: #26160f !important;
+    color: #f5e6c8 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* Question */
+body.dark-mode .faq-question {
+    color: #ffd700 !important;
+    background-color: transparent !important;
+}
+
+/* Answer */
+body.dark-mode .faq-answer {
+    color: #e8dcc0 !important;
+    background-color: transparent !important;
+}
+
+/* When open */
+body.dark-mode .faq-item.active {
+    background-color: #2c1b12 !important;
+}
+
+/* Hover */
+body.dark-mode .faq-question:hover {
+    background: rgba(212, 175, 55, 0.1) !important;
+}
+
+
+.goog-logo-link { display:none !important; } 
+.goog-te-gadget { color: transparent !important; }
+.goog-te-gadget .goog-te-combo { 
+    padding: 5px; 
+    border-radius: 4px; 
+    border: 1px solid #8b4513; 
+    color: #8b4513; 
+}
+
+/* --- Center All Section Headings --- */
+
+.box-title {
+    text-align: center;      /* Centers the main title */
+    width: 100%;             /* Ensures it takes full width to center correctly */
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Centers the "Global Tributes" or "Divine Authors" subtitle/role */
+.author-role {
+    text-align: center;
+    display: block;          /* Changes from inline-block to block for centering */
+    margin: 0 auto 30px;     /* Centers the block and adds bottom spacing */
+    width: fit-content;      /* Keeps the bottom border tight to the text */
+}
+
+/* Also centering the Title Divider if you are using it */
+.title-divider {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================== */
+/* --- UNIFIED BUTTONS (THE VEDIC STYLE) --- */
+/* ========================================== */
+/* 2. Main Action Button (Like 'Begin the Journey' in Hero) */
+.explore-btn {
+    padding: 16px 45px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    
+    /* Royal Gold Theme */
+    background: #ffd700;
+    color: #000;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+}
+
+.explore-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; 
+    padding: 120px 20px; 
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), 
+                url('images/battlefield.jpg') no-repeat center center;
+    background-size: cover; /* NO CUTTING: Image fills width/height dynamically */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Fix for the Hero Titles */
+.main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1rem;
+    color: #ffd700 !important; /* Forces Sacred Gold */
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+    z-index: 2;
+}
+
+.sub-title {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.hero-para {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    font-size: 1.15rem;
+    color: #f0f0f0;
+    z-index: 2;
+}
+
+.title-divider {
+    height: 3px;
+    width: 120px;
+    background: #ffd700;
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+
+.explore-btn {
+    padding: 16px 45px;
+    font-family: 'Poppins', sans-serif;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.explore-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Ensure your text is bright against the dark background */
+.hero-section h1, .hero-section p {
+    color: #ffffff;
+    max-width: 800px; /* Keeps text from stretching too wide */
+    margin-bottom: 20px;
+}
+
+
+
+/* --- SECTION BOUNDARY MASTER RULE --- */
+
+.section-box {
+    padding: 60px 40px;
+    max-width: 1150px;
+    margin: 100px auto; 
+    background: #ffffff;
+    border-radius: 25px; 
+    border: 3px solid #b8860b; 
+    box-shadow: 
+        inset 0 0 12px rgba(255, 215, 0, 0.3), 
+        0 0 20px rgba(184, 134, 11, 0.2), 
+        0 15px 45px rgba(0, 0, 0, 0.06);
+    
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.section-box:hover {
+    box-shadow: 
+        inset 0 0 15px rgba(255, 215, 0, 0.5), 
+        0 0 30px rgba(212, 175, 55, 0.5), 
+        0 20px 50px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    border-color: #ffd700;
+}
+
+
+/* --- Verse of the Day (VOTD) Specifics --- */
+.votd-section {
+    margin-top: 50px; 
+    z-index: 100;
+    text-align: center;
+}
+
+.votd-badge {
+    background: linear-gradient(135deg, #8b4513, #b8860b);
+    color: #ffd700;
+    padding: 8px 25px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sanskrit-holy-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.translation-box {
+    font-style: italic;
+    color: #555;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 0 auto 25px;
+}
+
+.votd-footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.verse-tag {
+    font-weight: 700;
+    color: #8b4513;
+}
+
+
+/* ================= AUTHOR SECTION ================= */
+.author-section {
+    text-align: center;
+}
+
+.box-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.8rem;
+    color: #8b4513;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Image below title */
+.author-image {
+    text-align: center;
+}
+
+.author-image img {
+    width: 100%;
+    max-width: 300px;
+    max-height: 50vh;
+    object-fit: contain;
+
+    padding: 10px;
+    border: 2px solid #deb887;   /* same as your other section */
+    border-radius: 15px;
+    background: #fffcf5;
+}
+
+/* Vertical cards */
+.author-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* Card */
+.author-card {
+    background: #fdfaf5;
+    border: 2px solid #deb887;
+    padding: 40px 30px;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.05);
+    border-radius: 20px;
+
+    width: 85%;
+    max-width: 850px;
+
+    transition: all 0.4s ease;
+}
+
+.author-card:hover {
+    border-color: #ff9933;
+    background: #fff;
+    transform: translateY(-5px);
+}
+
+/* Text */
+.author-info {
+    text-align: center;
+}
+
+.author-info h3 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.author-role {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #8b4513;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffd700;
+}
+
+.author-info p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+/* Highlight words */
+.highlight {
+    color: #d4af37; /* rich gold text */
+    font-weight: 600;
+    
+    padding: 2px 6px;
+    border-radius: 4px;
+    
+    /* subtle glow for premium feel */
+    text-shadow: 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Who is the Gita For? (Benefit Section) --- */
+
+.benefit-grid {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto; /* Enables the scroll */
+    padding: 20px 5px 40px 5px;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.benefit-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.benefit-card {
+    /* 1. Force a Square Shape */
+    width: 300px;
+    aspect-ratio: 1 / 1; /* Ensures height equals width */
+    
+    /* 2. Flex Layout to center content inside the square */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* 3. Your Existing Vedic Styles */
+    background: #fffcf5;
+    padding: 25px; /* Reduced padding slightly to fit the square better */
+    border-radius: 20px;
+    border: 2px solid #deb887; 
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.05);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Adjusting font sizes for square proportions */
+.benefit-card h4 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.25rem; /* Slightly smaller to prevent text overflow */
+    color: #5d4037;
+    margin-bottom: 10px;
+}
+
+.benefit-card p {
+    font-size: 0.95rem;
+    color: #6d4c41;
+    line-height: 1.5;
+}
+
+.benefit-card:hover {
+    border-color: #ff9933; /* Saffron hover */
+    transform: translateY(-5px);
+    background: #ffffff;
+}
+
+.b-icon {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.benefit-card h4 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    color: #5d4037;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: #6d4c41;
+    line-height: 1.6;
+}
+
+/*LEGENDS OF MAHABHARAT*/
+/* --- Persona Portal Overlay --- */
+.full-page-portal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #fffcf5; /* Sacred Parchment */
+    z-index: 99999;
+    display: none;
+    overflow: hidden;
+    animation: portalFade 0.4s ease-in-out;
+}
+
+@keyframes portalFade {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.portal-inner { height: 100%; display: flex; flex-direction: column; }
+
+.portal-header {
+    padding: 15px 40px;
+    background: #fff9e6;
+    border-bottom: 2px solid #deb887;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-x-btn {
+    background: #8b4513; color: #ffd700; border: none;
+    padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;
+}
+
+/* --- Container Layout --- */
+.persona-container { display: flex; flex: 1; overflow: hidden; }
+
+.persona-menu {
+    width: 320px; background: #fdf5e6; border-right: 2px solid #deb887;
+    overflow-y: auto; padding: 25px;
+}
+
+.menu-item {
+    padding: 15px; margin-bottom: 12px; border: 1px solid #deb887;
+    border-radius: 8px; background: white; cursor: pointer;
+    font-family: 'Cinzel Decorative', serif; transition: 0.3s;
+}
+
+.menu-item:hover, .menu-item.active {
+    background: #8b4513; color: white; transform: scale(1.05);
+}
+
+/* --- Centering the Content Area --- */
+.persona-display { 
+    flex: 1; 
+    padding: 50px; 
+    overflow-y: auto; 
+    background: white;
+    /* This centers the grand-entry div within the display area */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* --- Centering the Text & Divider --- */
+.grand-entry {
+    text-align: center;
+    width: 100%;
+    max-width: 900px; /* Limits width for better readability */
+}
+
+.entry-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divider-gold { 
+    height: 3px; 
+    background: #ffd700; 
+    width: 200px; 
+    margin: 20px auto; /* auto margin centers the horizontal line */
+    border-radius: 2px; 
+}
+
+/* Ensure the Select Hint is also centered */
+.select-hint {
+    margin-top: 20px;
+    font-style: italic;
+    color: #8b4513;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Detail Styling --- */
+.persona-content { 
+    text-align: center; 
+    max-width: 1000px; 
+    width: 90%;
+    margin: auto; /* Keeps the content centered when the grand entry disappears */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* This is the main right-side panel */
+.legend-detail-panel { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Keeps everything centered */
+    justify-content: flex-start;
+    padding-top: 10px;      /* Creates that gap from the top portal line */
+    height: 100%;           /* Fills the whole area */
+}
+
+/* Update your image-frame to be smarter */
+.image-frame {
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #deb887;
+    border-radius: 15px;
+    background: #fffcf5;
+    margin-top: 20px;       /* Adds space above the frame */
+    margin-bottom: 20px;    /* Adds space below the frame */
+    max-width: 80%;         /* Stops it from becoming too wide on big screens */
+}
+
+.image-frame img {
+    width: 100%;
+    max-height: 65vh;      /* "vh" means Viewport Height. This is the secret. */
+    object-fit: contain;   /* Keeps the crown from being cut */
+}
+
+#charImg { width: 100%; max-width: 350px; border-radius: 10px; }
+
+#charName { font-family: 'Cinzel Decorative', serif; font-size: 2.5rem; color: #8b4513; margin: 10px 0; }
+
+#charDesc { font-size: 1.1rem; line-height: 1.8; color: #5d4037; }
+
+.divider-gold { height: 3px; background: #ffd700; width: 200px; margin: 10px auto; border-radius: 2px; }
+
+/* --- Ticker Animation --- */
+.wisdom-ticker { background: #8b4513; color: #ffd700; padding: 15px; margin: 40px 0; overflow: hidden; }
+.ticker-content { display: flex; gap: 60px; white-space: nowrap; animation: ticker 25s linear infinite; }
+@keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* This makes all the highlighted words in your descriptions look professional */
+#charDesc strong {
+    color: #8b4513; /* Deep Brown/Saffron to match your theme */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+em {
+    font-style: normal;
+    color: #ccac3e; /* Or your preferred highlight color */
+    font-weight: 700;
+}
+
+
+/* --- Chapter List (Main Page) --- */
+.chapter-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/*search bar*/
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+/* Input box */
+#chapterSearch {
+    width: 260px;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid #8b5e34;
+    outline: none;
+
+    background: #5a2d0c; /* DARK BROWN */
+    color: #fff;
+
+    font-size: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+/* Placeholder */
+#chapterSearch::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+/* Focus effect */
+#chapterSearch:focus {
+    box-shadow: 0 8px 25px rgba(139, 94, 52, 0.6);
+    border: 1px solid #d4a373;
+}
+
+/* Button */
+.search-container button {
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: none;
+
+    background: #8b5e34;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.search-container button:hover {
+    background: #a47148;
+    transform: translateY(-2px);
+}
+
+/* --- Chapter Box: Main Container --- */
+.chapter-box {
+    background: #ffffff; /* White card */
+    border: 2px solid #deb887;
+    padding: 30px 45px; /* Increased padding */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px rgba(222, 184, 135, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Hover Effect: Background turns dark brown, but we will ensure text stays readable */
+.chapter-box:hover {
+    transform: translateX(10px);
+    background: #8b4513; 
+    border-color: #ffd700;
+}
+
+/* --- Chapter Meta (Chapter Number & Verse Count) --- */
+.chapter-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Increased from 0.75rem */
+    letter-spacing: 1px;
+    color: #a1887f; /* Soft brown for default state */
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* --- Chapter Name (Heading) --- */
+.chap-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem; /* Increased size */
+    color: #8b4513; /* Strong brown */
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* --- Chapter Subtitle --- */
+.chap-subtitle {
+    font-size: 1.1rem; /* Increased size */
+    color: #5d4037; /* Dark grayish brown */
+    margin-top: 8px;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+/* --- CRITICAL FIX: Ensure all text turns GOLD/WHITE on hover for contrast --- */
+.chapter-box:hover .chap-num,
+.chapter-box:hover .verse-count {
+    color: #ffd700 !important; /* Gold for numbers on hover */
+}
+
+.chapter-box:hover .chap-name {
+    color: #ffffff !important; /* Pure white for title on hover */
+}
+
+.chapter-box:hover .chap-subtitle {
+    color: #fdf5e6 !important; /* Cream for subtitle on hover */
+}
+
+/* --- Left Border Stripe --- */
+.chapter-box::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: #8b4513;
+    transition: width 0.3s ease;
+}
+
+.chapter-box:hover::before {
+    width: 15px;
+    background: #ffd700;
+}
+/* --- Verse Portal Styling --- */
+/* --- THE MAIN OVERLAY --- */
+#versePortal, .full-page-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 10000;
+    display: none; /* Controlled by JS */
+    flex-direction: column;
+}
+
+.portal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* --- THE STICKY HEADER --- */
+.portal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #ffffff;
+    border-bottom: 2px solid #f0e6d2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.portal-header h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    margin: 0;
+}
+
+/* --- THE SCROLLABLE CONTENT AREA --- */
+.portal-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 20px;
+    background-color: #fdfaf0; /* Light cream Vedic background */
+}
+
+/* --- THE SANSKRIT HERO CARD --- */
+.sanskrit-hero {
+    background: #fffdf5;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid #e0d5c0;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.05);
+}
+
+.sanskrit-hero .sanskrit-holy-text {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 2;
+    color: #8b4513;
+    margin: 0;
+}
+
+/* --- ATTRACTIVE WISDOM BOXES (Translation, Purport, etc) --- */
+.wisdom-box {
+    position: relative;
+    background: #ffffff;
+    padding: 35px 30px 25px 30px;
+    margin-bottom: 35px;
+    border-radius: 15px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #deb887;
+    border-left: 6px solid #8b4513;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.wisdom-box:hover {
+    transform: translateY(-5px);
+    border-left-color: #ffd700; /* Gold accent on hover */
+}
+
+/* The Label Badges */
+.box-label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #8b4513;
+    color: #ffd700;
+    padding: 4px 15px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.wisdom-box p {
+    line-height: 1.8;
+    color: #5d4037;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+#purportText p {
+    margin-bottom: 22px;
+    line-height: 1.8;
+    color: #4a3728;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+#purportText strong {
+    color: #8b4513;
+    font-weight: 700;
+}
+
+.section-label {
+    background: #8b4513;
+    color: #ffd700;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+#portalPurport em {
+    color: #b8860b; /* Goldenrod color for Sanskrit terms */
+    font-style: italic;
+    font-weight: bold;
+}
+
+#portalPurport strong {
+    display: block;
+    margin-top: 10px;
+    color: #8b4513; /* Deep brown for headers */
+}
+
+/* Box-specific accents */
+.translit-box { border-left-color: #b8860b; font-style: italic; }
+.translation-box { border-left-color: #d2691e; font-weight: 500; }
+.purport-box { border-left-color: #8b4513; }
+
+/* --- STICKY NAVIGATION FOOTER --- */
+.portal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #ffffff;
+    border-top: 2px solid #f0e6d2;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+.nav-btn {
+    min-width: 140px;
+    background: #8b4513;
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    padding: 12px 24px;
+    border-radius: 30px; /* Modern rounded buttons */
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: #5d4037;
+    transform: scale(1.05);
+}
+
+#verseCounter {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold;
+    color: #8b4513;
+    font-size: 1.2rem;
+}
+
+.exit-btn {
+    background: transparent;
+    color: #8b4513;
+    border: 1.5px solid #8b4513;
+    padding: 8px 20px;
+    border-radius: 50px; /* Pill shape */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exit-btn:hover {
+    background: #8b4513;
+    color: #ffd700; /* Gold text on brown background */
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+    transform: translateY(-2px);
+}
+
+
+/* --- Essential Verses Section --- */
+.famous-verses-section {
+    padding: 60px 0;
+    background: #fff;
+}
+
+.verse-grid-container {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 30px 40px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.verse-card {
+    flex: 0 0 300px; /* Same width as Podcast/Book cards */
+    background: #fff;
+    border: 1px solid #deb887;
+    border-radius: 15px;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.verse-card:hover {
+    transform: translateY(-10px);
+    border-color: #8b4513;
+    box-shadow: 0 15px 30px rgba(139, 69, 19, 0.1);
+}
+
+.verse-badge {
+    align-self: flex-start;
+    background: #fdf5e6;
+    color: #8b4513;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.verse-grid-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- The Verse Chip --- */
+.verse-chip {
+    flex: 0 0 auto; /* Keeps them from shrinking */
+    background: #ffffff;
+    border: 1px solid #deb887;
+    padding: 12px 25px;
+    border-radius: 50px; /* Pill shape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.verse-chip:hover {
+    background: #8b4513;
+    border-color: #8b4513;
+    transform: translateY(-5px);
+}
+
+.v-ref {
+    color: #b8860b;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.verse-info h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.verse-info p {
+    color: #5d4037;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.view-shlok {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #8b4513;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #f3efe6;
+    padding-top: 15px;
+}
+
+.verse-card:hover .view-shlok {
+    color: #b8860b;
+}
+
+.v-label {
+    font-size: 0.95rem;
+    color: #5d4037;
+    white-space: nowrap; /* Prevents text from wrapping */
+    transition: color 0.3s;
+}
+
+/* Hover text colors */
+.verse-chip:hover .v-ref,
+.verse-chip:hover .v-label {
+    color: #ffd700;
+}
+
+/* --- Podcast Section Styling --- */
+.podcast-section {
+    padding: 80px 0;
+    background: #fffdf9; /* Very light cream */
+}
+
+.podcast-shelf-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.podcast-grid {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 30px 10px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.podcast-grid::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* --- Podcast Card --- */
+.podcast-card {
+    flex: 0 0 300px; /* Fixed card width */
+    background: #ffffff;
+    border-radius: 15px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.podcast-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff0000; /* YouTube Red on hover */
+    box-shadow: 0 15px 30px rgba(255, 0, 0, 0.1);
+}
+
+/* YouTube Badge */
+.podcast-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.yt-red {
+    background: #ff0000;
+    color: white;
+}
+
+/* Icon & Content */
+.podcast-icon {
+    font-size: 2.5rem;
+    color: #ff0000;
+    margin-bottom: 20px;
+}
+
+.podcast-info h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.podcast-info p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    height: 3em; /* Limits to 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Play Hint */
+.play-hint {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff0000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+
+/* --- Sacred Literature Section --- */
+.books-section {
+    padding: 80px 0;
+    background: #fdfaf1; /* Warm paper-like background */
+}
+
+.book-shelf {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 30px 40px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.book-shelf::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Book Card Styling --- */
+.book-card {
+    flex: 0 0 280px; /* Slightly narrower than benefit cards */
+    background: white;
+    border: 1px solid #e0d5c0;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    border-color: #8b4513;
+    box-shadow: 0 12px 25px rgba(139, 69, 19, 0.1);
+}
+
+.book-cover-mock {
+    font-size: 3rem;
+    width: 80px;
+    height: 110px;
+    background: #f3efe6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 8px solid #8b4513; /* "Spine" of the book */
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+}
+
+.book-author {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #b8860b;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.book-card h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: #5d4037;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    height: 60px; /* Ensures all cards stay level */
+    overflow: hidden;
+}
+
+/* --- View Book Button --- */
+.buy-btn {
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid #8b4513;
+    color: #8b4513;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #8b4513;
+    color: #ffd700;
+}
+
+
+/* --- FAQ Section --- */
+.faq-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    border: 1px solid #deb887;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    padding: 20px 25px;
+    background: #fffdf9;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: #8b4513;
+    font-family: 'Cinzel Decorative', serif;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #fdf5e6;
+}
+
+.faq-question span {
+    font-size: 1.05rem;
+    padding-right: 15px;
+}
+
+.faq-question i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    color: #b8860b;
+}
+
+/* --- Answer Styling --- */
+.faq-answer {
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    background: #fff;
+}
+
+.faq-answer p {
+    padding: 0 25px 20px 25px;
+    color: #5d4037;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Active State --- */
+.faq-item.active {
+    border-color: #8b4513;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px; /* Expands to fit content */
+    transition: max-height 0.4s cubic-bezier(1, 0, 1, 0);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg); /* Plus becomes an X */
+    color: #8b4513;
+}
+
+
+/* --- Simple Footer Styling --- */
+.simple-footer {
+    background-color: #fdf5e6; /* Match the warm cream theme */
+    padding: 40px 20px;
+    border-top: 3px solid #8b4513; /* Strong thematic top border */
+    text-align: center;
+    color: #5d4037;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- Links Styling --- */
+.name-link, .footer-link {
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.name-link:hover, .footer-link:hover {
+    color: #b8860b;
+    border-bottom: 1px solid #b8860b;
+}
+
+.name-link strong {
+    font-family: 'Cinzel Decorative', serif; /* Consistent branding */
+    font-size: 1.1rem;
+}
+
+/* --- Copyright Text --- */
+.copyright-text {
+    font-size: 0.85rem !important;
+    opacity: 0.8;
+    margin-top: 25px !important;
+    border-top: 1px solid #deb887;
+    padding-top: 20px;
+}
+
+
+.goog-logo-link { display:none !important; } 
+.goog-te-gadget { color: transparent !important; }
+.goog-te-gadget .goog-te-combo { 
+    padding: 5px; 
+    border-radius: 4px; 
+    border: 1px solid #8b4513; 
+    color: #8b4513; 
+}
+
+/* --- Center All Section Headings --- */
+
+.box-title {
+    text-align: center;      /* Centers the main title */
+    width: 100%;             /* Ensures it takes full width to center correctly */
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Centers the "Global Tributes" or "Divine Authors" subtitle/role */
+.author-role {
+    text-align: center;
+    display: block;          /* Changes from inline-block to block for centering */
+    margin: 0 auto 30px;     /* Centers the block and adds bottom spacing */
+    width: fit-content;      /* Keeps the bottom border tight to the text */
+}
+
+/* Also centering the Title Divider if you are using it */
+.title-divider {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================== */
+/* --- UNIFIED BUTTONS (THE VEDIC STYLE) --- */
+/* ========================================== */
+/* 2. Main Action Button (Like 'Begin the Journey' in Hero) */
+.explore-btn {
+    padding: 16px 45px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    
+    /* Royal Gold Theme */
+    background: #ffd700;
+    color: #000;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+}
+
+.explore-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; 
+    padding: 120px 20px; 
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), 
+                url('images/battlefield.jpg') no-repeat center center;
+    background-size: cover; /* NO CUTTING: Image fills width/height dynamically */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Fix for the Hero Titles */
+.main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1rem;
+    color: #ffd700 !important; /* Forces Sacred Gold */
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+    z-index: 2;
+}
+
+.sub-title {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.hero-para {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    font-size: 1.15rem;
+    color: #f0f0f0;
+    z-index: 2;
+}
+
+.title-divider {
+    height: 3px;
+    width: 120px;
+    background: #ffd700;
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+
+.explore-btn {
+    padding: 16px 45px;
+    font-family: 'Poppins', sans-serif;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.explore-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Ensure your text is bright against the dark background */
+.hero-section h1, .hero-section p {
+    color: #ffffff;
+    max-width: 800px; /* Keeps text from stretching too wide */
+    margin-bottom: 20px;
+}
+
+
+
+/* --- SECTION BOUNDARY MASTER RULE --- */
+
+.section-box {
+    padding: 60px 40px;
+    max-width: 1150px;
+    margin: 100px auto; 
+    background: #ffffff;
+    border-radius: 25px; 
+    border: 3px solid #b8860b; 
+    box-shadow: 
+        inset 0 0 12px rgba(255, 215, 0, 0.3), 
+        0 0 20px rgba(184, 134, 11, 0.2), 
+        0 15px 45px rgba(0, 0, 0, 0.06);
+    
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.section-box:hover {
+    box-shadow: 
+        inset 0 0 15px rgba(255, 215, 0, 0.5), 
+        0 0 30px rgba(212, 175, 55, 0.5), 
+        0 20px 50px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    border-color: #ffd700;
+}
+
+
+/* --- Verse of the Day (VOTD) Specifics --- */
+.votd-section {
+    margin-top: 50px; 
+    z-index: 100;
+    text-align: center;
+}
+
+.votd-badge {
+    background: linear-gradient(135deg, #8b4513, #b8860b);
+    color: #ffd700;
+    padding: 8px 25px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sanskrit-holy-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.translation-box {
+    font-style: italic;
+    color: #555;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 0 auto 25px;
+}
+
+.votd-footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.verse-tag {
+    font-weight: 700;
+    color: #8b4513;
+}
+
+
+/* ================= AUTHOR SECTION ================= */
+.author-section {
+    text-align: center;
+}
+
+.box-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.8rem;
+    color: #8b4513;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Image below title */
+.author-image {
+    text-align: center;
+}
+
+.author-image img {
+    width: 100%;
+    max-width: 300px;
+    max-height: 50vh;
+    object-fit: contain;
+
+    padding: 10px;
+    border: 2px solid #deb887;   /* same as your other section */
+    border-radius: 15px;
+    background: #fffcf5;
+}
+
+/* Vertical cards */
+.author-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* Card */
+.author-card {
+    background: #fdfaf5;
+    border: 2px solid #deb887;
+    padding: 40px 30px;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.05);
+    border-radius: 20px;
+
+    width: 85%;
+    max-width: 850px;
+
+    transition: all 0.4s ease;
+}
+
+.author-card:hover {
+    border-color: #ff9933;
+    background: #fff;
+    transform: translateY(-5px);
+}
+
+/* Text */
+.author-info {
+    text-align: center;
+}
+
+.author-info h3 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.author-role {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #8b4513;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffd700;
+}
+
+.author-info p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+/* Highlight words */
+.highlight {
+    color: #d4af37; /* rich gold text */
+    font-weight: 600;
+    
+    padding: 2px 6px;
+    border-radius: 4px;
+    
+    /* subtle glow for premium feel */
+    text-shadow: 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Who is the Gita For? (Benefit Section) --- */
+
+.benefit-grid {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto; /* Enables the scroll */
+    padding: 20px 5px 40px 5px;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.benefit-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.benefit-card {
+    /* 1. Force a Square Shape */
+    width: 300px;
+    aspect-ratio: 1 / 1; /* Ensures height equals width */
+    
+    /* 2. Flex Layout to center content inside the square */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* 3. Your Existing Vedic Styles */
+    background: #fffcf5;
+    padding: 25px; /* Reduced padding slightly to fit the square better */
+    border-radius: 20px;
+    border: 2px solid #deb887; 
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.05);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Adjusting font sizes for square proportions */
+.benefit-card h4 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.25rem; /* Slightly smaller to prevent text overflow */
+    color: #5d4037;
+    margin-bottom: 10px;
+}
+
+.benefit-card p {
+    font-size: 0.95rem;
+    color: #6d4c41;
+    line-height: 1.5;
+}
+
+.benefit-card:hover {
+    border-color: #ff9933; /* Saffron hover */
+    transform: translateY(-5px);
+    background: #ffffff;
+}
+
+.b-icon {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.benefit-card h4 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    color: #5d4037;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: #6d4c41;
+    line-height: 1.6;
+}
+
+/*LEGENDS OF MAHABHARAT*/
+/* --- Persona Portal Overlay --- */
+.full-page-portal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #fffcf5; /* Sacred Parchment */
+    z-index: 99999;
+    display: none;
+    overflow: hidden;
+    animation: portalFade 0.4s ease-in-out;
+}
+
+@keyframes portalFade {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.portal-inner { height: 100%; display: flex; flex-direction: column; }
+
+.portal-header {
+    padding: 15px 40px;
+    background: #fff9e6;
+    border-bottom: 2px solid #deb887;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-x-btn {
+    background: #8b4513; color: #ffd700; border: none;
+    padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold;
+}
+
+/* --- Container Layout --- */
+.persona-container { display: flex; flex: 1; overflow: hidden; }
+
+.persona-menu {
+    width: 320px; background: #fdf5e6; border-right: 2px solid #deb887;
+    overflow-y: auto; padding: 25px;
+}
+
+.menu-item {
+    padding: 15px; margin-bottom: 12px; border: 1px solid #deb887;
+    border-radius: 8px; background: white; cursor: pointer;
+    font-family: 'Cinzel Decorative', serif; transition: 0.3s;
+}
+
+.menu-item:hover, .menu-item.active {
+    background: #8b4513; color: white; transform: scale(1.05);
+}
+
+/* --- Centering the Content Area --- */
+.persona-display { 
+    flex: 1; 
+    padding: 50px; 
+    overflow-y: auto; 
+    background: white;
+    /* This centers the grand-entry div within the display area */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* --- Centering the Text & Divider --- */
+.grand-entry {
+    text-align: center;
+    width: 100%;
+    max-width: 900px; /* Limits width for better readability */
+}
+
+.entry-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divider-gold { 
+    height: 3px; 
+    background: #ffd700; 
+    width: 200px; 
+    margin: 20px auto; /* auto margin centers the horizontal line */
+    border-radius: 2px; 
+}
+
+/* Ensure the Select Hint is also centered */
+.select-hint {
+    margin-top: 20px;
+    font-style: italic;
+    color: #8b4513;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Detail Styling --- */
+.persona-content { 
+    text-align: center; 
+    max-width: 700px; 
+    margin: auto; /* Keeps the content centered when the grand entry disappears */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* This is the main right-side panel */
+.legend-detail-panel { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Keeps everything centered */
+    justify-content: flex-start;
+    padding-top: 30px;      /* Creates that gap from the top portal line */
+    height: 100%;           /* Fills the whole area */
+}
+
+/* Update your image-frame to be smarter */
+.image-frame {
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #deb887;
+    border-radius: 15px;
+    background: #fffcf5;
+    margin-top: 20px;       /* Adds space above the frame */
+    margin-bottom: 20px;    /* Adds space below the frame */
+    max-width: 80%;         /* Stops it from becoming too wide on big screens */
+}
+
+.image-frame img {
+    width: 100%;
+    max-height: 50vh;      /* "vh" means Viewport Height. This is the secret. */
+    object-fit: contain;   /* Keeps the crown from being cut */
+}
+
+#charImg { width: 100%; max-width: 350px; border-radius: 10px; }
+
+#charName { font-family: 'Cinzel Decorative', serif; font-size: 2.5rem; color: #8b4513; margin: 10px 0; }
+
+#charDesc { font-size: 1.1rem; line-height: 1.8; color: #5d4037; }
+
+.divider-gold { height: 3px; background: #ffd700; width: 200px; margin: 10px auto; border-radius: 2px; }
+
+/* --- Ticker Animation --- */
+.wisdom-ticker { background: #8b4513; color: #ffd700; padding: 15px; margin: 40px 0; overflow: hidden; }
+.ticker-content { display: flex; gap: 60px; white-space: nowrap; animation: ticker 25s linear infinite; }
+@keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* This makes all the highlighted words in your descriptions look professional */
+#charDesc strong {
+    color: #8b4513; /* Deep Brown/Saffron to match your theme */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+em {
+    font-style: normal;
+    color: #ccac3e; /* Or your preferred highlight color */
+    font-weight: 700;
+}
+
+
+/* --- Chapter List (Main Page) --- */
+.chapter-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/*search bar*/
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+/* Input box */
+#chapterSearch {
+    width: 260px;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid #8b5e34;
+    outline: none;
+
+    background: #5a2d0c; /* DARK BROWN */
+    color: #fff;
+
+    font-size: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+/* Placeholder */
+#chapterSearch::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+/* Focus effect */
+#chapterSearch:focus {
+    box-shadow: 0 8px 25px rgba(139, 94, 52, 0.6);
+    border: 1px solid #d4a373;
+}
+
+/* Button */
+.search-container button {
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: none;
+
+    background: #8b5e34;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.search-container button:hover {
+    background: #a47148;
+    transform: translateY(-2px);
+}
+
+/* --- Chapter Box: Main Container --- */
+.chapter-box {
+    background: #ffffff; /* White card */
+    border: 2px solid #deb887;
+    padding: 30px 45px; /* Increased padding */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px rgba(222, 184, 135, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Hover Effect: Background turns dark brown, but we will ensure text stays readable */
+.chapter-box:hover {
+    transform: translateX(10px);
+    background: #8b4513; 
+    border-color: #ffd700;
+}
+
+/* --- Chapter Meta (Chapter Number & Verse Count) --- */
+.chapter-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Increased from 0.75rem */
+    letter-spacing: 1px;
+    color: #a1887f; /* Soft brown for default state */
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* --- Chapter Name (Heading) --- */
+.chap-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem; /* Increased size */
+    color: #8b4513; /* Strong brown */
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* --- Chapter Subtitle --- */
+.chap-subtitle {
+    font-size: 1.1rem; /* Increased size */
+    color: #5d4037; /* Dark grayish brown */
+    margin-top: 8px;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+/* --- CRITICAL FIX: Ensure all text turns GOLD/WHITE on hover for contrast --- */
+.chapter-box:hover .chap-num,
+.chapter-box:hover .verse-count {
+    color: #ffd700 !important; /* Gold for numbers on hover */
+}
+
+.chapter-box:hover .chap-name {
+    color: #ffffff !important; /* Pure white for title on hover */
+}
+
+.chapter-box:hover .chap-subtitle {
+    color: #fdf5e6 !important; /* Cream for subtitle on hover */
+}
+
+/* --- Left Border Stripe --- */
+.chapter-box::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: #8b4513;
+    transition: width 0.3s ease;
+}
+
+.chapter-box:hover::before {
+    width: 15px;
+    background: #ffd700;
+}
+/* --- Verse Portal Styling --- */
+/* --- THE MAIN OVERLAY --- */
+#versePortal, .full-page-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 10000;
+    display: none; /* Controlled by JS */
+    flex-direction: column;
+}
+
+.portal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* --- THE STICKY HEADER --- */
+.portal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #ffffff;
+    border-bottom: 2px solid #f0e6d2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.portal-header h2 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    margin: 0;
+}
+
+/* --- THE SCROLLABLE CONTENT AREA --- */
+.portal-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 20px;
+    background-color: #fdfaf0; /* Light cream Vedic background */
+}
+
+/* --- THE SANSKRIT HERO CARD --- */
+.sanskrit-hero {
+    background: #fffdf5;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid #e0d5c0;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.05);
+}
+
+.sanskrit-hero .sanskrit-holy-text {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 2;
+    color: #8b4513;
+    margin: 0;
+}
+
+/* --- ATTRACTIVE WISDOM BOXES (Translation, Purport, etc) --- */
+.wisdom-box {
+    position: relative;
+    background: #ffffff;
+    padding: 35px 30px 25px 30px;
+    margin-bottom: 35px;
+    border-radius: 15px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #deb887;
+    border-left: 6px solid #8b4513;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.wisdom-box:hover {
+    transform: translateY(-5px);
+    border-left-color: #ffd700; /* Gold accent on hover */
+}
+
+/* The Label Badges */
+.box-label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #8b4513;
+    color: #ffd700;
+    padding: 4px 15px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.wisdom-box p {
+    line-height: 1.8;
+    color: #5d4037;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+#purportText p {
+    margin-bottom: 22px;
+    line-height: 1.8;
+    color: #4a3728;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+#purportText strong {
+    color: #8b4513;
+    font-weight: 700;
+}
+
+.section-label {
+    background: #8b4513;
+    color: #ffd700;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+#portalPurport em {
+    color: #b8860b; /* Goldenrod color for Sanskrit terms */
+    font-style: italic;
+    font-weight: bold;
+}
+
+#portalPurport strong {
+    display: block;
+    margin-top: 10px;
+    color: #8b4513; /* Deep brown for headers */
+}
+
+/* Box-specific accents */
+.translit-box { border-left-color: #b8860b; font-style: italic; }
+.translation-box { border-left-color: #d2691e; font-weight: 500; }
+.purport-box { border-left-color: #8b4513; }
+
+/* --- STICKY NAVIGATION FOOTER --- */
+.portal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #ffffff;
+    border-top: 2px solid #f0e6d2;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+.nav-btn {
+    min-width: 140px;
+    background: #8b4513;
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    padding: 12px 24px;
+    border-radius: 30px; /* Modern rounded buttons */
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: #5d4037;
+    transform: scale(1.05);
+}
+
+#verseCounter {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold;
+    color: #8b4513;
+    font-size: 1.2rem;
+}
+
+.exit-btn {
+    background: transparent;
+    color: #8b4513;
+    border: 1.5px solid #8b4513;
+    padding: 8px 20px;
+    border-radius: 50px; /* Pill shape */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exit-btn:hover {
+    background: #8b4513;
+    color: #ffd700; /* Gold text on brown background */
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+    transform: translateY(-2px);
+}
+
+
+/* --- Essential Verses Section --- */
+.famous-verses-section {
+    padding: 60px 0;
+    background: #fff;
+}
+
+.verse-grid-container {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 30px 40px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.verse-card {
+    flex: 0 0 300px; /* Same width as Podcast/Book cards */
+    background: #fff;
+    border: 1px solid #deb887;
+    border-radius: 15px;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.verse-card:hover {
+    transform: translateY(-10px);
+    border-color: #8b4513;
+    box-shadow: 0 15px 30px rgba(139, 69, 19, 0.1);
+}
+
+.verse-badge {
+    align-self: flex-start;
+    background: #fdf5e6;
+    color: #8b4513;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.verse-grid-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- The Verse Chip --- */
+.verse-chip {
+    flex: 0 0 auto; /* Keeps them from shrinking */
+    background: #ffffff;
+    border: 1px solid #deb887;
+    padding: 12px 25px;
+    border-radius: 50px; /* Pill shape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.verse-chip:hover {
+    background: #8b4513;
+    border-color: #8b4513;
+    transform: translateY(-5px);
+}
+
+.v-ref {
+    color: #b8860b;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.verse-info h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.verse-info p {
+    color: #5d4037;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.view-shlok {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #8b4513;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #f3efe6;
+    padding-top: 15px;
+}
+
+.verse-card:hover .view-shlok {
+    color: #b8860b;
+}
+
+.v-label {
+    font-size: 0.95rem;
+    color: #5d4037;
+    white-space: nowrap; /* Prevents text from wrapping */
+    transition: color 0.3s;
+}
+
+/* Hover text colors */
+.verse-chip:hover .v-ref,
+.verse-chip:hover .v-label {
+    color: #ffd700;
+}
+
+/* --- Podcast Section Styling --- */
+.podcast-section {
+    padding: 80px 0;
+    background: #fffdf9; /* Very light cream */
+}
+
+.podcast-shelf-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.podcast-grid {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 30px 10px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.podcast-grid::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* --- Podcast Card --- */
+.podcast-card {
+    flex: 0 0 300px; /* Fixed card width */
+    background: #ffffff;
+    border-radius: 15px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.podcast-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff0000; /* YouTube Red on hover */
+    box-shadow: 0 15px 30px rgba(255, 0, 0, 0.1);
+}
+
+/* YouTube Badge */
+.podcast-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.yt-red {
+    background: #ff0000;
+    color: white;
+}
+
+/* Icon & Content */
+.podcast-icon {
+    font-size: 2.5rem;
+    color: #ff0000;
+    margin-bottom: 20px;
+}
+
+.podcast-info h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.podcast-info p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    height: 3em; /* Limits to 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Play Hint */
+.play-hint {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff0000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+
+/* --- Sacred Literature Section --- */
+.books-section {
+    padding: 80px 0;
+    background: #fdfaf1; /* Warm paper-like background */
+}
+
+.book-shelf {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 30px 40px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.book-shelf::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Book Card Styling --- */
+.book-card {
+    flex: 0 0 280px; /* Slightly narrower than benefit cards */
+    background: white;
+    border: 1px solid #e0d5c0;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    border-color: #8b4513;
+    box-shadow: 0 12px 25px rgba(139, 69, 19, 0.1);
+}
+
+.book-cover-mock {
+    font-size: 3rem;
+    width: 80px;
+    height: 110px;
+    background: #f3efe6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 8px solid #8b4513; /* "Spine" of the book */
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+}
+
+.book-author {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #b8860b;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.book-card h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #8b4513;
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: #5d4037;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    height: 60px; /* Ensures all cards stay level */
+    overflow: hidden;
+}
+
+/* --- View Book Button --- */
+.buy-btn {
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid #8b4513;
+    color: #8b4513;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #8b4513;
+    color: #ffd700;
+}
+
+
+/* --- FAQ Section --- */
+.faq-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    border: 1px solid #deb887;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    padding: 20px 25px;
+    background: #fffdf9;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: #8b4513;
+    font-family: 'Cinzel Decorative', serif;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #fdf5e6;
+}
+
+.faq-question span {
+    font-size: 1.05rem;
+    padding-right: 15px;
+}
+
+.faq-question i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    color: #b8860b;
+}
+
+/* --- Answer Styling --- */
+.faq-answer {
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    background: #fff;
+}
+
+.faq-answer p {
+    padding: 0 25px 20px 25px;
+    color: #5d4037;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Active State --- */
+.faq-item.active {
+    border-color: #8b4513;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px; /* Expands to fit content */
+    transition: max-height 0.4s cubic-bezier(1, 0, 1, 0);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg); /* Plus becomes an X */
+    color: #8b4513;
+}
+
+
+/* --- Simple Footer Styling --- */
+.simple-footer {
+    background-color: #fdf5e6; /* Match the warm cream theme */
+    padding: 40px 20px;
+    border-top: 3px solid #8b4513; /* Strong thematic top border */
+    text-align: center;
+    color: #5d4037;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- Links Styling --- */
+.name-link, .footer-link {
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.name-link:hover, .footer-link:hover {
+    color: #b8860b;
+    border-bottom: 1px solid #b8860b;
+}
+
+.name-link strong {
+    font-family: 'Cinzel Decorative', serif; /* Consistent branding */
+    font-size: 1.1rem;
+}
+
+/* --- Copyright Text --- */
+.copyright-text {
+    font-size: 0.85rem !important;
+    opacity: 0.8;
+    margin-top: 25px !important;
+    border-top: 1px solid #deb887;
+    padding-top: 20px;
+}

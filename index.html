@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gita Portal | Divine Wisdom</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- FIREBASE SDKs (Required for Auth) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<div id="auth-container">
+    
+    <!-- LANDING PAGE SECTION -->
+    <div id="landing-page" class="auth-screen">
+        <div class="hero-content">
+            <h1 class="main-title">Welcome to Gita Portal</h1>
+            <p class="hero-para">Access the timeless wisdom of the Shrimad Bhagavad Gita</p>
+            <button class="explore-btn" onclick="goToLoginPage()">Let's Get Started</button>
+        </div>
+    </div>
+
+    <!-- LOGIN PAGE SECTION (Hidden by default) -->
+    <div id="login-page" class="auth-screen hidden">
+        <div class="login-box">
+            <h2 class="box-title">Sign In</h2>
+            <div class="input-group" style="margin-bottom: 20px;">
+                <input type="email" id="email" placeholder="Email" style="width:100%; padding:10px; margin-bottom:10px;">
+                <input type="password" id="password" placeholder="Password" style="width:100%; padding:10px;">
+            </div>
+
+            <div class="auth-buttons">
+                <button class="explore-btn" onclick="loginUser()" style="width:100%;">Login</button>
+                <button class="explore-btn" onclick="signupUser()" style="background:none; border:1px solid #8b4513; color:#8b4513; width:100%; margin-top:10px;">Sign Up</button>
+            </div>
+
+            <div class="divider" style="margin:20px 0;">OR</div>
+
+            <button class="google-btn" onclick="loginWithGoogle()" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:10px; background:#fff; border:1px solid #ddd; cursor:pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="20">
+                Continue with Google
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--2. MAIN WEBSITE CONTENT -->
+<div id="main-website-content" class="hidden">
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-dharmachakra"></i> <span>MENU</span>
+                </button>
+            </div>
+
+            <div class="nav-logo">GITA PORTAL</div>
+
+            <div class="nav-right">
+                <button onclick="logout()" style="background: #8b4513; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; margin-right: 10px;">
+                    Logout <i class="fas fa-sign-out-alt"></i>
+                </button>
+                <button id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+            </div>
+        </div>
+    </nav>
+
+<!-- SIDE MENU -->
+<div id="sideMenu" class="side-menu">
+    <div class="menu-header">📜 Navigation</div>
+
+    <a href="#" onclick="scrollToSection('hero-section'); toggleMenu(); return false;">🏹 Introduction</a>
+    <a href="#" onclick="scrollToSection('votd-section'); toggleMenu(); return false;">✨ Verse of the Day</a>
+    <a href="#" onclick="scrollToSection('author-section'); toggleMenu(); return false;">🧠 Authors</a>
+    <a href="#" onclick="scrollToSection('benefit-section'); toggleMenu(); return false;">🎯 Who is Gita For</a>
+    <a href="#" onclick="scrollToSection('global-section'); toggleMenu(); return false;">🌍 Gita Around the World</a>
+    <a href="#" onclick="scrollToSection('legends-section'); toggleMenu(); return false;">🏹 Legends of Mahabharat</a>
+    <a href="#" onclick="scrollToSection('chapters-section'); toggleMenu(); return false;">📖 Chapters</a>
+    <a href="#" onclick="scrollToSection('verses-section'); toggleMenu(); return false;">✨ Essential Verses</a>
+    <a href="#" onclick="scrollToSection('daily-section'); toggleMenu(); return false;">🧘 Gita in Daily Life</a>
+    <a href="#" onclick="scrollToSection('podcast-section'); toggleMenu(); return false;">🎧 Podcasts</a>
+    <a href="#" onclick="scrollToSection('books-section'); toggleMenu(); return false;">📚 Books</a>
+    <a href="#" onclick="scrollToSection('faq-section'); toggleMenu(); return false;">❓ FAQ</a>
+</div>
+
+<header class="hero-section" id="hero-section">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1 class="main-title">Shrimad Bhagavad Gita</h1>
+            <h2 class="sub-title">The Divine Song of God</h2>
+            <div class="title-divider"></div>
+            <p class="hero-para">
+                The Bhagavad Gita is a 700-verse Hindu scripture that is part of the epic Mahabharata. 
+                Set on the battlefield of Kurukshetra, it captures the timeless dialogue between 
+                Prince Arjuna and Lord Krishna, offering profound wisdom on duty, righteousness, 
+                and the path to self-realization.
+            </p>
+            <button class="explore-btn" onclick="document.getElementById('chapterListContainer').scrollIntoView({behavior: 'smooth'})">
+                Begin the Journey
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="section-box votd-section" id="votd-section">
+    <div class="votd-badge">Verse Of The Day</div>
+    <div id="votdContainer" class="votd-content" onclick="openDailyVerse()">
+        <div class="shlok-ornament">✨</div>
+        <p id="dailySanskrit" class="sanskrit-holy-text"></p>
+        <p id="dailyTranslation" class="translation-box"></p>
+        <div class="votd-footer">
+            <span id="dailyReference" class="verse-tag"></span>
+            <span class="explore-hint">Tap to read full purport <i class="fas fa-arrow-right"></i></span>
+        </div>
+    </div>
+</section>
+
+<section class="section-box author-section" id="author-section">
+    <h2 class="box-title">The Divine Authors</h2>
+
+    <!-- Image below title -->
+    <div class="author-image">
+        <img src="images/authors.jpg" alt="Ved Vyasa and Lord Ganesha">
+    </div>
+
+    <!-- Cards -->
+    <div class="author-flex">
+
+        <!-- VYASA -->
+        <div class="author-card">
+            <div class="author-info">
+                <h3>Maharishi Ved Vyasa</h3>
+                <span class="author-role">The Compiler</span>
+                <p>
+                    Maharishi Ved Vyasa, born as <span class="highlight">Krishna Dvaipayana</span>, 
+                    was the son of Sage <span class="highlight">Parashara</span> and 
+                    <span class="highlight">Satyavati</span>. He is regarded as a 
+                    <span class="highlight">Chiranjivi</span> and the architect of Vedic knowledge. 
+                    He classified the Vedas into four and authored the Mahabharata. 
+                    Uniquely, he was both the <span class="highlight">grandfather</span> of the Pandavas and Kauravas 
+                    and the narrator of their story. He dictated the epic to 
+                    <span class="highlight">Lord Ganesha</span> and granted 
+                    <span class="highlight">divine vision</span> to Sanjaya. 
+                    His presence ensured the preservation of <span class="highlight">Dharma</span> 
+                    for future generations.
+                </p>
+            </div>
+        </div>
+        
+        <!-- GANESHA -->
+        <div class="author-card">
+            <div class="author-info">
+                <h3>Lord Ganesha</h3>
+                <span class="author-role">The Divine Scribe</span>
+                <p>
+                    Lord Ganesha, the son of <span class="highlight">Lord Shiva</span> and 
+                    <span class="highlight">Goddess Parvati</span>, is revered as the 
+                    <span class="highlight">Vighnaharta</span> or remover of obstacles and the patron of 
+                    <span class="highlight">intellect and wisdom</span>. In the context of the Mahabharata, 
+                    he played the indispensable role of the <span class="highlight">divine scribe</span>. 
+                    When Sage Ved Vyasa conceived the vast epic, he required a writer capable of matching 
+                    his depth. Ganesha accepted on the condition that Vyasa would not pause. 
+                    To fulfill this, he broke his own <span class="highlight">tusk</span> to use as a stylus, 
+                    symbolizing sacrifice for sacred knowledge. His role transformed the epic from 
+                    <span class="highlight">oral tradition</span> into a timeless written masterpiece.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-box benefit-section" id="benefit-section">
+            <h2 class="box-title">Who is the Gita For?</h2>
+            <p class="section-subtitle">A universal manual providing 5,000 years of wisdom for modern challenges.</p>
+            
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="b-icon">🎓</div>
+                    <h4>Students</h4>
+                    <p>Develops <strong>one-pointed concentration</strong> and removes the paralyzing fear of exam results.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">💼</div>
+                    <h4>Professionals</h4>
+                    <p>Teaches <strong>skill in action</strong> and how to lead teams with integrity and emotional stability.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">🧘</div>
+                    <h4>Seekers</h4>
+                    <p>Provides a clear map for <strong>Self-Realization</strong> and understanding the nature of consciousness.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">😰</div>
+                    <h4>The Anxious</h4>
+                    <p>Offers an immediate cure for <strong>overthinking</strong> by focusing on the "Present Moment" duty.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">⚖️</div>
+                    <h4>Decision Makers</h4>
+                    <p>Helps resolve <strong>moral dilemmas</strong> when you are stuck between two difficult choices.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">🏃</div>
+                    <h4>Athletes</h4>
+                    <p>Promotes the concept of <strong>detached effort</strong>—playing the game perfectly without being crushed by loss.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">🎨</div>
+                    <h4>Artists</h4>
+                    <p>Connects the creator to the <strong>Divine Source</strong>, viewing art as a form of worship and service.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">🏠</div>
+                    <h4>Homemakers</h4>
+                    <p>Transforms daily chores into <strong>Yoga</strong> through the spirit of selfless sacrifice and love.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">💔</div>
+                    <h4>The Grieving</h4>
+                    <p>Provides the ultimate comfort by explaining the <strong>immortality of the soul</strong>.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="b-icon">🌍</div>
+                    <h4>Leaders</h4>
+                    <p>Defines the <strong>Rajarshi</strong> (Sage-King) qualities needed to serve society without ego.</p>
+                </div>
+            </div>
+</section>
+
+<section class="section-box global-tributes-section" id="global-section">
+    <h2 class="box-title">Gita Around the World</h2>
+    <p class="section-subtitle">How the world's greatest minds found inspiration in the Divine Song.</p>
+
+    <div class="tribute-grid benefit-grid" id="tributeGrid">
+        
+        <div class="benefit-card tribute-card">
+            <h4>Albert Einstein</h4>
+            <span class="tribute-profession">Theoretical Physicist</span>
+            <p class="quote">"When I read the Bhagavad Gita and reflect about how God created this universe, everything else seems so superfluous."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>J. Robert Oppenheimer</h4>
+            <span class="tribute-profession">Father of the Atomic Bomb</span>
+            <p class="quote">"The Gita is the most beautiful philosophical song existing in any known tongue."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Henry David Thoreau</h4>
+            <span class="tribute-profession">American Naturalist & Author</span>
+            <p class="quote">"In the morning I bathe my intellect in the stupendous philosophy of the Bhagavad Gita..."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Ralph Waldo Emerson</h4>
+            <span class="tribute-profession">Philosopher & Essayist</span>
+            <p class="quote">"I owed a magnificent day to the Bhagavad Gita. It was as if an empire spoke to us."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Carl Jung</h4>
+            <span class="tribute-profession">Psychiatrist & Psychoanalyst</span>
+            <p class="quote">"The idea that man is like unto an inverted tree seems to have been current in bygone ages. The Gita spoke of this 5,000 years ago."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Hermann Hesse</h4>
+            <span class="tribute-profession">Nobel Prize-winning Novelist</span>
+            <p class="quote">"The marvel of the Bhagavad Gita is its truly beautiful revelation of life's wisdom."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Nikola Tesla</h4>
+            <span class="tribute-profession">Inventor & Electrical Engineer</span>
+            <p class="quote">Used Vedic terminology like 'Akasha' and 'Prana' from the Gita to describe the physical world.</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Aldous Huxley</h4>
+            <span class="tribute-profession">English Writer & Philosopher</span>
+            <p class="quote">"The Gita is one of the clearest and most comprehensive summaries of the perennial philosophy."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>Will Durant</h4>
+            <span class="tribute-profession">American Historian & Philosopher</span>
+            <p class="quote">"The Bhagavad Gita is the deepest philosophical verity of the soul. It is the most beautiful thing in world literature."</p>
+        </div>
+
+        <div class="benefit-card tribute-card">
+            <h4>T.S. Eliot</h4>
+            <span class="tribute-profession">Nobel Laureate Poet & Playwright</span>
+            <p class="quote">"The Bhagavad Gita is the next greatest philosophical poem to the Divine Comedy of Dante."</p>
+        </div>
+        </div>
+</section>
+
+
+<section class="section-box" id="legends-section">
+    <div style="text-align: center; padding: 40px;">
+        <h2 class="box-title">Legends of Mahabharat</h2>
+        <p>Explore the souls that shaped the greatest epic of Dharma.</p>
+        <button class="explore-btn" onclick="openPersona()">Enter the History</button>
+    </div>
+</section>
+
+<div id="personaPortal" class="full-page-portal">
+    <div class="portal-inner">
+        <div class="portal-header">
+            <h2 class="sanskrit-holy-text" style="margin:0; color:#8b4513;">महाभारतम्</h2>
+            <button class="close-x-btn" onclick="closePersona()">✕ Close Portal</button>
+        </div>
+
+        <div class="persona-container">
+            <div class="persona-menu" id="personaMenuList"></div>
+
+            <div class="persona-display" id="personaDetail">
+                <div id="grandEntry" class="grand-entry">
+                    <div class="entry-header">
+                        <span>THE GREAT EPIC</span>
+                        <h1>MAHABHARAT</h1>
+                        <div class="divider-gold"></div>
+                    </div>
+                    <div class="wisdom-ticker">
+                        <div class="ticker-content">
+                            <span>✨ Yato Dharmastato Jayah ✨</span>
+                            <span>📜 Truth alone triumphs 📜</span>
+                            <span>🏹 Skill is nothing without Character 🏹</span>
+                        </div>
+                    </div>
+                    <p class="select-hint">Select a legend from the left to reveal their story</p>
+                </div>
+
+                <div id="characterDetailView" class="persona-content" style="display: none;">
+                    <div class="image-frame">
+                        <img id="charImg" src="" alt="Legend">
+                    </div>
+                    <h2 id="charName"></h2>
+                    <div class="divider-gold" style="width:100px; margin: 20px auto;"></div>
+                    <p id="charDesc"></p>
+                    <button class="explore-btn" style="margin-top:30px;" onclick="resetPersonaDisplay()">Back to Selection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section-box" id="chapters-section">
+    <h2 class="box-title">The 18 Spiritual Chapters</h2>
+    <p style="text-align:center; color: #8b4513; margin-bottom: 30px; font-style: italic;">
+        Explore the 700 verses of divine conversation
+    </p>
+    
+    <div class="search-container">
+    <input 
+        type="text" 
+        id="chapterSearch" 
+        placeholder="Search chapter.verse (eg: 2.47)"
+    >
+    <button onclick="handleVerseSearch()">Enter</button>
+    </div>
+
+    <div class="chapter-list-container" id="chapterListContainer">
+        </div>
+</section>
+
+<div id="versePortal" class="full-page-portal" style="display:none;">
+    <div class="portal-container">
+        <div class="portal-header">
+            <h2 id="portalHeader">Chapter Information</h2>
+            <button class="exit-btn" onclick="closeVersePortal()">✕ Exit Study</button>
+        </div>
+
+        <div class="portal-scroll-area">
+            <div class="wisdom-card sanskrit-hero">
+                <p id="portalSanskrit" class="sanskrit-holy-text"></p>
+            </div>
+
+            <div class="wisdom-box translit-box">
+                <span class="box-label">Transliteration</span>
+                <p id="portalTransliteration"></p>
+            </div>
+
+            <div class="wisdom-box translation-box">
+                <span class="box-label">Translation</span>
+                <p id="portalTranslation"></p>
+            </div>
+
+            <div class="wisdom-box purport-box">
+                <span class="box-label">Purport & Commentary</span>
+                <div id="portalPurport"></div> 
+            </div>
+        </div>
+
+        <div class="portal-footer">
+            <button class="nav-btn" onclick="prevVerse()"><i class="fas fa-arrow-left"></i> Previous</button>
+            <span id="verseCounter">Verse 1 of 47</span>
+            <button class="nav-btn" onclick="nextVerse()">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<section class="section-box famous-verses-section" id="verses-section">
+    <h2 class="box-title">Essential Verses</h2>
+    <p class="section-subtitle">Pivotal shloks that define the essence of the Gita.</p>
+    
+    <div class="verse-grid-container benefit-grid" id="essentialVersesGrid">
+        
+<div class="verse-card" onclick="openVersePortal(2, 47)">
+    <div class="verse-badge">Karma Yoga</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 2.47</span>
+        <h3>The Law of Karma</h3>
+        <p>Perform your duty without attachment to the results; remain equanimous in success and failure.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(4, 7)">
+    <div class="verse-badge">Avatara</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 4.7</span>
+        <h3>Divine Descent</h3>
+        <p>Whenever righteousness declines and evil prevails, the Divine manifests on Earth.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(2, 20)">
+    <div class="verse-badge">Sankhya</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 2.20</span>
+        <h3>Eternity of Soul</h3>
+        <p>The soul is never born, nor does it ever die. It is ancient, eternal, and indestructible.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(18, 66)">
+    <div class="verse-badge">Moksha</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 18.66</span>
+        <h3>Final Surrender</h3>
+        <p>Abandon all varieties of religion and just surrender unto the Divine. Do not fear.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(9, 22)">
+    <div class="verse-badge">Bhakti</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 9.22</span>
+        <h3>Divine Protection</h3>
+        <p>For those who worship with exclusive devotion, the Lord provides what they lack and preserves what they have.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(2, 62)">
+    <div class="verse-badge">Psychology</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 2.62</span>
+        <h3>Ladder of Fall</h3>
+        <p>Contemplating on objects of senses leads to attachment, which leads to desire and eventually anger.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(10, 8)">
+    <div class="verse-badge">Vibhuti</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 10.8</span>
+        <h3>Source of All</h3>
+        <p>Everything emanates from the Divine. Knowing this, the wise worship with all their hearts.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(6, 5)">
+    <div class="verse-badge">Dhyana</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 6.5</span>
+        <h3>Mind as Friend</h3>
+        <p>Elevate yourself by your own mind. The mind is the friend of the soul, and also its enemy.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(7, 19)">
+    <div class="verse-badge">Jnana</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 7.19</span>
+        <h3>Ultimate Wisdom</h3>
+        <p>After many births, the wise person surrenders to the Divine, realizing that 'Vasudeva is all'.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+
+<div class="verse-card" onclick="openVersePortal(15, 7)">
+    <div class="verse-badge">Purushottama</div>
+    <div class="verse-info">
+        <span class="v-ref">BG 15.7</span>
+        <h3>The Eternal Fragment</h3>
+        <p>The living entities in this world are eternal fragments of the Divine, struggling with the senses.</p>
+    </div>
+    <div class="view-shlok">Read Verse <i class="fas fa-arrow-right"></i></div>
+</div>
+</div>
+</section>
+
+<section class="section-box daily-life-section" id="daily-section">
+    <h2 class="box-title">Gita in Daily Life</h2>
+    <p class="section-subtitle">Practical applications of ancient wisdom for modern scenarios.</p>
+    
+<div class="daily-grid benefit-grid" id="dailyLifeGrid">
+    
+    <div class="benefit-card" onclick="openVersePortal(6, 5)">
+        <div class="b-icon">🧠</div>
+        <span class="verse-tag">BG 6.5</span>
+        <p class="sanskrit-sm">उद्धरेदात्मनात्मानं नात्मानमवसादयेत् |</p>
+        <h4>Mastering the Mind</h4>
+        <p>Uplift yourself through the power of your own mind; do not let yourself degrade.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(5, 18)">
+        <div class="b-icon">🌍</div>
+        <span class="verse-tag">BG 5.18</span>
+        <p class="sanskrit-sm">विद्याविनयसम्पन्ने ब्राह्मणे गवि हस्तिनि |</p>
+        <h4>Universal Compassion</h4>
+        <p>The wise see with equal vision a learned priest, a cow, an elephant, or a dog.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(2, 47)">
+        <div class="b-icon">🌬️</div>
+        <span class="verse-tag">BG 2.47</span>
+        <p class="sanskrit-sm">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन |</p>
+        <h4>Anxiety-Free Work</h4>
+        <p>You have a right to perform your duty, but you are not entitled to the fruits of your actions.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(2, 70)">
+        <div class="b-icon">🌊</div>
+        <span class="verse-tag">BG 2.70</span>
+        <p class="sanskrit-sm">आपूर्यमाणमचलप्रतिष्ठं समुद्रमाप: प्रविशन्ति यद्वत् |</p>
+        <h4>Inner Stillness</h4>
+        <p>Peace comes to one who remains undisturbed by the flow of desires, like the ocean.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(3, 20)">
+        <div class="b-icon">🤝</div>
+        <span class="verse-tag">BG 3.20</span>
+        <p class="sanskrit-sm">लोकसंग्रहमेवापि सम्पश्यन्कर्तुमर्हसि ||</p>
+        <h4>Social Service</h4>
+        <p>You should perform your work for the sake of the welfare and unity of the world.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(6, 17)">
+        <div class="b-icon">⚖️</div>
+        <span class="verse-tag">BG 6.17</span>
+        <p class="sanskrit-sm">युक्ताहारविहारस्य युक्तचेष्टस्य कर्मसु |</p>
+        <h4>Healthy Living</h4>
+        <p>Yoga destroys all pain for one who is balanced in eating, sleeping, and working.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(2, 63)">
+        <div class="b-icon">🔥</div>
+        <span class="verse-tag">BG 2.63</span>
+        <p class="sanskrit-sm">क्रोधाद्भवति सम्मोह: सम्मोहात्स्मृतिविभ्रम: |</p>
+        <h4>Handling Anger</h4>
+        <p>From anger comes delusion; from delusion, the loss of memory and reason.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(2, 14)">
+        <div class="b-icon">🏔️</div>
+        <span class="verse-tag">BG 2.14</span>
+        <p class="sanskrit-sm">मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदु:खदा: |</p>
+        <h4>Tolerance of Change</h4>
+        <p>Heat, cold, joy, and pain are temporary; they come and go like the seasons.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(18, 61)">
+        <div class="b-icon">🛡️</div>
+        <span class="verse-tag">BG 18.61</span>
+        <p class="sanskrit-sm">ईश्वर: सर्वभूतानां हृद्देशेऽर्जुन तिष्ठति |</p>
+        <h4>Inner Guidance</h4>
+        <p>The Supreme Lord dwells in the heart of all living beings, guiding their journey.</p>
+    </div>
+
+    <div class="benefit-card" onclick="openVersePortal(18, 63)">
+        <div class="b-icon">💡</div>
+        <span class="verse-tag">BG 18.63</span>
+        <p class="sanskrit-sm">विमृश्यैतदशेषेण यथेच्छसि तथा कुरु ||</p>
+        <h4>Freedom of Choice</h4>
+        <p>Deliberate on this wisdom fully, and then do what you wish to do.</p>
+    </div>
+</div>
+</section>
+
+<section class="section-box podcast-section" id="podcast-section">
+    <h2 class="box-title">Podcasts</h2>
+    <p class="section-subtitle">Modern dialogues on ancient wisdom.</p>
+
+    <div class="podcast-shelf-container">
+
+        <div class="podcast-grid benefit-grid" id="podcastGrid">
+            
+            <a href="https://youtu.be/Cpk0cmdg-Wg?si=2c_ShRqXMFWe2Tet" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Acharya Prashant</h3>
+                    <p>Science of Bhagavad Gita | Gita And Neuroscience</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/6TQe-5VbfOk?si=hIWhwYag9If08t9k" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Gauranga Das Prabhu</h3>
+                    <p>Gauranga Das Prabhu's LIFE LESSON from the BHAGAVD GITA with Ranveer Allahabadia | TRS</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+            
+            <a href="https://youtu.be/vUOqPkJluVM?si=fLkywNgORAebJ4DY" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>BK Sister Shivani</h3>
+                    <p>God, Love, Relationship, Life and Spirituality</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/iKcaIxm55AQ?si=tl-E3u71sJT2eT80" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Gaur Gopal Das</h3>
+                    <p>REAL Purpose Of Spiritual Life- @GaurGopalDas On Monkhood, Bhagawad Gita Learning & More</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/QMtdOS8W3Fc?si=D3IYAmWlfyszpXZk" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Gauranga Das</h3>
+                    <p>Krishna's Advice For All Your Problems | Gita Explained</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/jpYHVyDyOlQ?si=ElK7tC7ZtuxsoGVe" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Nityanand Charan Das</h3>
+                    <p>Gen-Z Spirituality Podcast</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/PJVIetDMCjE?si=oBMCnZSphwlAAVXr" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Amogh Lila Prabhu</h3>
+                    <p>Krishna Bhakti And ISKON Culture- Amogh Lila Prabhu: Engineer Who Became A Monk</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/4h9A7-rPlSQ?si=V58EhlLwTeNsFaLr" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>S.B. Keshava Swami</h3>
+                    <p>Bhagavad Gita's Life-Changing Lessons: Dicipline, 5 AM Club & Spiritual Wisdom</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+            <a href="https://youtu.be/HmxU1UTHFmM?si=PpyxgoC-R8OSmUCp" target="_blank" class="podcast-card yt-style">
+                <div class="podcast-badge yt-red">YouTube</div>
+                <div class="podcast-icon"><i class="fab fa-youtube"></i></div>
+                <div class="podcast-info">
+                    <h3>Aravindaksha Madhava Das</h3>
+                    <p>Mastering the Mind with Bhagavad Gita</p>
+                </div>
+                <div class="play-hint">Watch Now <i class="fas fa-play-circle"></i></div>
+            </a>
+
+</div>
+</section>
+
+<section class="section-box books-section" id="books-section">
+    <h2 class="box-title">Sacred Literature</h2>
+    <p class="section-subtitle">Deepen your study with these world-renowned commentaries and translations.</p>
+    
+    <div class="book-shelf benefit-grid" id="bookGrid">
+        <div class="book-card">
+            <div class="book-cover-mock">📜</div>
+            <div class="book-details">
+                <span class="book-author">Srila Prabhupada</span>
+                <h3>Gita As It Is</h3>
+                <p>The most widely read English translation with a focus on Bhakti Yoga.</p>
+                <a href="https://amzn.in/d/08ZvL7Qv" 
+                   target="_blank"
+                   class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">📖</div>
+            <div class="book-details">
+                <span class="book-author">Eknath Easwaran</span>
+                <h3>The Bhagavad Gita</h3>
+                <p>A lyrical translation focusing on daily meditation and selfless service.</p>
+                <a href="https://amzn.in/d/0arlUIOC"
+                target="_blank" 
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">🏛️</div>
+            <div class="book-details">
+                <span class="book-author">Adi Shankara</span>
+                <h3>Gita Bhashya</h3>
+                <p>The foundational Advaita Vedanta commentary on non-duality.</p>
+                <a href="https://amzn.in/d/06RHKPSo" 
+                target="_blank" 
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">🧘</div>
+            <div class="book-details">
+                <span class="book-author">P. Yogananda</span>
+                <h3>God Talks with Arjun</h3>
+                <p>A deep dive into the Kriya Yoga and psychological symbolism of the war.</p>
+                <a href="https://amzn.in/d/05AEo8zz"
+                target="_blank"  
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">🎓</div>
+            <div class="book-details">
+                <span class="book-author">S. Radhakrishnan</span>
+                <h3>The Bhagavad Gita</h3>
+                <p>An academic and philosophical masterpiece by India's former President.</p>
+                <a href="https://amzn.in/d/03LHeHTS" 
+                target="_blank"
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">💡</div>
+            <div class="book-details">
+                <span class="book-author">S. Chinmayananda</span>
+                <h3>The Holy Geeta</h3>
+                <p>A logical, point-by-point breakdown for the modern rational mind.</p>
+                <a href="https://amzn.in/d/08aA45o8"
+                target="_blank"
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">👓</div>
+            <div class="book-details">
+                <span class="book-author">M.K. Gandhi</span>
+                <h3>Gita According to Gandhi</h3>
+                <p>Focuses on 'Anasakti Yoga' or the gospel of selfless action.</p>
+                <a href="https://amzn.in/d/054mSZJH" 
+                target="_blank"
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">✨</div>
+            <div class="book-details">
+                <span class="book-author">S. Mukundananda</span>
+                <h3>Commentary on Gita</h3>
+                <p>A very relatable and clear guide for the 21st-century seeker.</p>
+                <a href="https://amzn.in/d/0eLlAnYB" 
+                target="_blank"
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">🖋️</div>
+            <div class="book-details">
+                <span class="book-author">Bibek Debroy</span>
+                <h3>The Bhagavad Gita</h3>
+                <p>A literal and verse-by-verse translation from the original Sanskrit.</p>
+                <a href="https://amzn.in/d/06I7wZ3B" 
+                target="_blank"
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <div class="book-cover-mock">🔡</div>
+            <div class="book-details">
+                <span class="book-author">W. Sargeant</span>
+                <h3>The Gita (Interlinear)</h3>
+                <p>Best for students wanting to learn the Sanskrit grammar of each verse.</p>
+                <a href="https://amzn.in/d/0csGVU02" 
+                target="_blank"
+                class="buy-btn">View Book</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-box faq-section" id="faq-section">
+    <h2 class="box-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Clearing common doubts about the Shrimad Bhagavad Gita.</p>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the main message of the Bhagavad Gita?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The core message is <strong>Nishkama Karma</strong>—performing one's duty selflessly without attachment to the results, while remaining equanimous in both success and failure.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Is the Gita a religious book or a philosophical guide?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>While it is a sacred Hindu scripture, it is widely regarded as a <strong>universal philosophical guide</strong>. It addresses human psychology, ethics, and the nature of existence, making it relevant to people of all faiths.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Why was the Gita spoken on a battlefield?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The battlefield of Kurukshetra symbolizes the <strong>internal conflict</strong> we face daily. It teaches that spirituality isn't about escaping life, but about finding clarity and strength in the midst of life's toughest challenges.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Who wrote the Bhagavad Gita?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The Gita is part of the Mahabharata, traditionally attributed to the sage <strong>Vyasa</strong>. It records the dialogue between Sri Krishna and Arjuna.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How many chapters and verses are in the Gita?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The Gita consists of <strong>18 Chapters</strong> and <strong>700 Verses</strong> (Shlokas).</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can the Gita help with modern-day stress?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. By teaching us to focus on the <strong>present moment</strong> and detach from "what-if" anxieties, it acts as a powerful manual for mental health and resilience.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the difference between Yoga in the Gita and physical Yoga?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>In the Gita, 'Yoga' means <strong>Union</strong> with the Divine or excellence in action. While physical postures (Asanas) are a small part, the Gita focuses on Yoga of Knowledge (Jnana), Devotion (Bhakti), and Action (Karma).</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Does the Gita support violence?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>No. It supports <strong>Dharma (Righteousness)</strong>. Krishna urges Arjuna to fight not out of anger or hatred, but as a duty to protect justice and stop systemic evil when all peaceful options have failed.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Which commentary of the Gita should I start with?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>It depends on your interest. For devotion, try <em>Prabhupada</em>; for meditation, <em>Eknath Easwaran</em>; and for logical philosophy, <em>Swami Chinmayananda</em>.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is 'Dharma' in the context of the Gita?</span>
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Dharma is the <strong>essential nature</strong> or the "right path" of a being. It refers to the duties that sustain the individual and society in harmony with the cosmic order.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="simple-footer">
+    <div class="footer-content">
+        <p>Designed and Developed by: 
+            <a href="YOUR_LINKEDIN_URL_HERE" target="_blank" class="name-link">
+                <strong>Jyoti Pandey</strong>
+            </a>
+        </p>
+        
+        <p>Send your feedback to: <a href="mailto:jyoti1210486@gmail.com" class="footer-link">jyoti1210486@gmail.com</a></p>
+        
+        <p class="copyright-text">&copy; 2026 Copyright: Jyoti Pandey. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="data/ch1.js"></script>
+<script src="data/ch2.js"></script>
+<script src="data/ch3.js"></script>
+<script src="data/ch4.js"></script>
+<script src="data/ch5.js"></script>
+<script src="data/ch6.js"></script>
+<script src="data/ch7.js"></script>
+<script src="data/ch8.js"></script>
+<script src="data/ch9.js"></script>
+<script src="data/ch10.js"></script>
+<script src="data/ch11.js"></script>
+<script src="data/ch12.js"></script>
+<script src="data/ch13.js"></script>
+<script src="data/ch14.js"></script>
+<script src="data/ch15.js"></script>
+<script src="data/ch16.js"></script>
+<script src="data/ch17.js"></script>
+<script src="data/ch18.js"></script>
+<script src="script.js"></script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', 
+    includedLanguages: 'hi,en,sa,mr,gu,ta,te,kn,ml,es,fr,de', // Restrict to relevant languages
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { 
+    getAuth, 
+    GoogleAuthProvider, 
+    signInWithPopup, 
+    signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAco7hVGeZXXNCEM0Rawvi0m5I0ObWyrEo",
+    authDomain: "gita-portal.firebaseapp.com",
+    projectId: "gita-portal",
+    storageBucket: "gita-portal.firebasestorage.app",
+    messagingSenderId: "393859484462",
+    appId: "1:393859484462:web:4282f4389321db2949c8bf",
+    measurementId: "G-18CFS6Q3KX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // =========================
+  // 🔐 EMAIL LOGIN
+  // =========================
+  window.loginUser = function () {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        alert("Login Success");
+      })
+      .catch(err => alert(err.message));
+  };
+
+  // =========================
+  // 🆕 SIGNUP
+  // =========================
+  window.signupUser = function () {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        alert("Account Created");
+      })
+      .catch(err => alert(err.message));
+  };
+
+  // =========================
+  // 🌐 GOOGLE LOGIN
+  // =========================
+  window.googleLogin = function () {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then(() => {
+        alert("Google Login Success");
+      })
+      .catch(err => alert(err.message));
+  };
+
+  // =========================
+  // 🚪 LOGOUT
+  // =========================
+  window.logoutUser = function () {
+    signOut(auth).then(() => {
+      alert("Logged Out");
+    });
+  };
+
+  // =========================
+  // 🔄 AUTO LOGIN STATE
+  // =========================
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User logged in
+      document.querySelector(".login-page").style.display = "none";
+    } else {
+      // User logged out
+      document.querySelector(".login-page").style.display = "flex";
+    }
+  });
+
+</script>
+</body>
+</html>
