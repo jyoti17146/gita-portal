@@ -1,6 +1,6 @@
 # Gita Portal
 
-Gita Portal is an interactive web platform designed to present the teachings of the Bhagavad Gita in a modern, relatable, and user-friendly way for today’s generation.
+Gita Portal is an interactive web platform designed to bridge the gap between ancient spiritual wisdom and the fast-paced lives of modern youth and Gen Z. By moving away from complex jargon, this project focuses on presenting the teachings of the Bhagavad Gita through a clean UI and relatable, real-world interpretations.
 
 ## Features
 
@@ -24,7 +24,7 @@ Gita Portal is an interactive web platform designed to present the teachings of 
 
 ## Project Vision
 
-The goal of this project is to bridge the gap between ancient spiritual wisdom and modern digital experiences.
+The 'Gita Portal' is more than just a website; it is a bridge between tradition and technology. My goal is to continue refining the user experience and adding interactive layers that make spiritual growth a seamless part of the digital lifestyle.
 
 ## Author
 
