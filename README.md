@@ -5,7 +5,7 @@ Gita Portal is an interactive web platform designed to bridge the gap between an
 ## Features
 
 - Clean and responsive UI
-- Relatable modern interpretations
+- Relatable modern interpretations 
 - Interactive frontend experience
 - Easy navigation and readability
 
