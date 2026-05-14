@@ -25,12 +25,3 @@ Gita Portal is an interactive web platform designed to bridge the gap between an
 ## Project Vision
 
 The 'Gita Portal' is more than just a website; it is a bridge between tradition and technology. My goal is to continue refining the user experience and adding interactive layers that make spiritual growth a seamless part of the digital lifestyle.
-
-## Author
-
-Jyoti Pandey  
-B.Tech Engineering Student  
-Aspiring Software Developer
-
-LinkedIn:  
-https://www.linkedin.com/in/jyoti-pandey-6460a32a7
